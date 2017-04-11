@@ -9,8 +9,8 @@
  ______________________________________________________________________________
 |Class: Contact                                                                |
 |------------------------------------------------------------------------------|
-|-Title : [string, char(5), int{0-NULL, 1-Mr, 2-Mrs}]                          |
-|-fullName: string                                                             |
+|-title : string                                                               | // Other possible types [string, char(5), int{0-NULL, 1-Mr, 2-Mrs}]
+|-fullName: string                                                             | // May need fName, lName
 |-nationality: string                                                          |
 |-state: string                                                                |
 |-country : string                                                             |
@@ -18,5 +18,8 @@
 |-phone: string                                                                |
 |-race: string                                                                 |
 |------------------------------------------------------------------------------|
-|+                                                                             |
+|+Contact(string, string, string, string, string, string, string, string)      | // Constructor
+|+~Contact()                                                                   | // Deconstructor
+|                                                                              |
+|                                                                              |
 |______________________________________________________________________________|
