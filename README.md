@@ -14,6 +14,7 @@ admission officer at a college/university wants to see the names of all the inco
 freshmen, s/he may want to have access to all the students whose classification is freshman.
 Bursar’s office may be interested in knowing all the students whose fees have not been
 paid in full. These are just few examples.
+
 Professor Gang, being the friendly person that he is, has been struggling with how to keep
 track of his friends, acquaintances, family members, and colleagues. Furthermore, he
 frequently meets people but quickly forgets relevant information (name, nationality,
