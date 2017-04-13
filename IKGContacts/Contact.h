@@ -44,5 +44,16 @@ public:
     // Race
     void setRace(string);
     string getRace() const;
+    
+private:
+    string title;
+    string fName;
+    string lName;
+    string nationality;
+    string state;
+    string country;
+    string email;
+    string phoneNumber;
+    string race;
 };
 
