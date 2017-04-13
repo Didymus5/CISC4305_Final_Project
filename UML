@@ -9,6 +9,7 @@
  ______________________________________________________________________________
 |Class: Contact                                                                |
 |------------------------------------------------------------------------------|
+|-key : unsigned int                                                           | // Must be unique
 |-title : string                                                               | // Other possible types [string, char(5), int{0-NULL, 1-Mr, 2-Mrs}]
 |-fullName: string                                                             | // May need fName, lName
 |-nationality: string                                                          |
