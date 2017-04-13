@@ -4,6 +4,7 @@
 
 Contact::Contact()
 {
+    return;
 }
 
 
