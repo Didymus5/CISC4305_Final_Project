@@ -9,5 +9,7 @@ public:
 	Contact();
 	~Contact();
     
+    void setFirstName(string);
+    string getFirstName() const;
 };
 
