@@ -44,6 +44,8 @@ public:
     // Race
     void setRace(string);
     string getRace() const;
+
+	string getAttribute(short) const;
     
 private:
     string title;
