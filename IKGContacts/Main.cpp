@@ -1,22 +1,15 @@
-#include <map>
-#include <list>
-#include <string>
-#include <vector>
-#include "Contact.h"
-using namespace std;
+#include "mainwindow.h"
 
-// for test purposes
-int main() {
-	//Contact contact("Mr.");
-	string title = "Mr.";
+using namespace IKGContacts;
 
-	//map<string, unsigned int> mapOfTitle;
-	//mapOfTitle.insert(make_pair(title, 12));
-	//mapOfTitle[0]
-	//cout << mapOfTitle[0];
+[STAThreadAttribute]
+int main(array<System::String ^> ^args)
+{
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false);
 
-	//list<unsigned int> sortedTitle;
-	//sortedTitle.
-	vector<unsigned int> sortedTitle;
+	// Create the main window and run it
+	Application::Run(gcnew MainWindow());
 
+	return 0;
 }

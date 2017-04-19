@@ -111,7 +111,7 @@ namespace IKGContacts {
 			// importToolStripMenuItem
 			// 
 			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
-			this->importToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->importToolStripMenuItem->Size = System::Drawing::Size(134, 22);
 			this->importToolStripMenuItem->Text = L"Import";
 			this->importToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::importToolStripMenuItem_Click);
 			// 
@@ -119,7 +119,7 @@ namespace IKGContacts {
 			// 
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			this->exitToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Alt | System::Windows::Forms::Keys::F4));
-			this->exitToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->exitToolStripMenuItem->Size = System::Drawing::Size(134, 22);
 			this->exitToolStripMenuItem->Text = L"Exit";
 			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::exitToolStripMenuItem_Click);
 			// 

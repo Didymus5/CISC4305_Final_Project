@@ -52,10 +52,6 @@
     <None Include="..\UML">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="mainwindow.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
