@@ -11,7 +11,8 @@
 |------------------------------------------------------------------------------|
 |-key : unsigned int                                                           | // Must be unique
 |-title : string                                                               | // Other possible types [string, char(5), int{0-NULL, 1-Mr, 2-Mrs}]
-|-fullName: string                                                             | // May need fName, lName
+|-fName: string                                                                |
+|-lName: string                                                                |
 |-nationality: string                                                          |
 |-state: string                                                                |
 |-country : string                                                             |
@@ -19,8 +20,18 @@
 |-phone: string                                                                |
 |-race: string                                                                 |
 |------------------------------------------------------------------------------|
-|+Contact(string, string, string, string, string, string, string, string)      | // Constructor
+|+Contact(string title, string fName, string lName, string nationality,        |
+|   string state, string country, string email, string phone, string race)     | // Constructor
 |+~Contact()                                                                   | // Deconstructor
 |                                                                              |
 |                                                                              |
+|______________________________________________________________________________|
+
+
+ ______________________________________________________________________________
+|Class: File                                                                   |
+|------------------------------------------------------------------------------|
+|-<attribute> : <type>                                                         |
+|------------------------------------------------------------------------------|
+|+write(Contact&, unsigned int) : void                                         | // unsigned int lineNumber: line of file to write to
 |______________________________________________________________________________|
