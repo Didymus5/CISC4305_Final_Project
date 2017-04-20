@@ -63,3 +63,21 @@ vector<Contact> File::readContactList()
 
 	return list;
 }
+
+void File::writeContactList(vector<Contact> list) {
+	fstream ioFile{ "sampleContacts.dat", ios::in | ios::out };
+
+	if (!ioFile) { cerr << "File could not be opened" << endl; exit(EXIT_FAILURE); }
+
+	for (int i = 0; i < list.size(); i++)
+		ioFile <<
+		list[i].getTitle() << '|' <<
+		list[i].getFirstName() << '|' <<
+		list[i].getLastName() << '|' <<
+		list[i].getNationality() << '|' <<
+		list[i].getState() << '|' <<
+		list[i].getCountry() << '|' <<
+		list[i].getEmail() << '|' <<
+		list[i].getPhoneNumber() << '|' <<
+		list[i].getRace() << endl;
+}

@@ -78,12 +78,12 @@ void Contact::setEmail(string email)
 	this->email = email;
 }
 
-string Contact::getCountry() const
+string Contact::getEmail() const
 {
 	return email;
 }
 
-void Contact::setPhoneNumber(string phonenumber)
+void Contact::setPhoneNumber(string phoneNumber)
 {
 	this->phoneNumber = phoneNumber;
 }
