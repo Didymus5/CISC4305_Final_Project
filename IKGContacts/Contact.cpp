@@ -13,6 +13,97 @@ Contact::~Contact()
     
 }
 
+void Contact::setTitle(string title)
+{
+	this->title = title;
+}
+
+string Contact::getTitle() const
+{
+	return title;
+}
+
+void Contact::setFirstName(string firstName)
+{
+	this->fName = firstName;
+}
+
+string Contact::getFirstName() const
+{
+	return fName;
+}
+
+void Contact::setLastName(string lastname)
+{
+	this->lName = lastname;
+}
+
+string Contact::getLastName() const
+{
+	return lName;
+}
+
+void Contact::setNationality(string nationality)
+{
+	this->nationality = nationality;
+}
+
+string Contact::getNationality() const
+{
+	return nationality;
+}
+
+void Contact::setState(string state)
+{
+	this->state = state;
+}
+
+string Contact::getState()const
+{
+	return state;
+}
+
+void Contact::setCountry(string country)
+{
+	this->country = country;
+}
+
+string Contact::getCountry() const
+{
+	return country;
+}
+
+void Contact::setEmail(string email)
+{
+	this->email = email;
+}
+
+string Contact::getCountry() const
+{
+	return email;
+}
+
+void Contact::setPhoneNumber(string phonenumber)
+{
+	this->phoneNumber = phoneNumber;
+}
+
+string Contact::getPhoneNumber() const
+{
+	return phoneNumber;
+}
+
+void Contact::setRace(string race)
+{
+	this->race = race;
+}
+
+string Contact::getRace()const
+{
+	return race;
+}
+
+/*
 string Contact::getAttribute(short attribute) const
 {
 	switch (attribute) {
@@ -28,4 +119,4 @@ string Contact::getAttribute(short attribute) const
 	default: return "NULL";
 	}
 	return "NULL";
-}
+}*/
