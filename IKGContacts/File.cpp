@@ -29,7 +29,7 @@ Contact File::readContact(int position)
 
 vector<Contact> File::readContactList()
 {
-	fstream ioFile{ "sampleContacts.dat", ios::in | ios::out };
+	fstream ioFile{ fileName, ios::in | ios::out };
 
 	if (!ioFile) {cerr << "File could not be opened" << endl; exit(EXIT_FAILURE);}
 	
@@ -65,7 +65,7 @@ vector<Contact> File::readContactList()
 }
 
 void File::writeContactList(vector<Contact> list) {
-	fstream ioFile{ "sampleContacts.dat", ios::in | ios::out };
+	//fstream ioFile{ fileName, ios::in | ios::out };
 
 	if (!ioFile) { cerr << "File could not be opened" << endl; exit(EXIT_FAILURE); }
 
@@ -83,11 +83,11 @@ void File::writeContactList(vector<Contact> list) {
 }
 
 void File::writeContact(Contact& contact) {
-	fstream ioFile{ "sampleContacts.dat", ios::app };
+	//fstream ioFile{ fileName, ios::app };
 
-	if (!ioFile) { cerr << "File could not be opened" << endl; exit(EXIT_FAILURE); }
+	if (!appFile) { cerr << "File could not be opened" << endl; exit(EXIT_FAILURE); }
 
-	ioFile <<
+	appFile <<
 		contact.getTitle() << '|' <<
 		contact.getFirstName() << '|' <<
 		contact.getLastName() << '|' <<

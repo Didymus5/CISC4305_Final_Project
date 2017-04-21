@@ -20,5 +20,7 @@ public:
 	void writeContact(Contact&);
 
 private:
-	//fstream ioFile{"sampleContacts.dat", ios::in | ios::out };
+	string fileName = "sampleContacts.dat";
+	fstream ioFile{fileName, ios::in | ios::out };
+	fstream appFile{ fileName, ios::app };
 };
