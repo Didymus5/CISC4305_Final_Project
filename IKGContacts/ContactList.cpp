@@ -8,7 +8,11 @@ ContactList::ContactList()
 	//cout << "read contact list()" << endl;
 	list = file.readContactList();
 }
-
+//
+// sort accepts a numerical value coresponding to a Contact object's attribute
+// 1 - title, 2 - firstName, 3 - lastName...
+// ContactList vector is sorted alphanumerically for corresponding field
+//
 void ContactList::sort(short field)
 {
 	sort(field, 0, list.size() - 1);
@@ -105,25 +109,6 @@ void ContactList::print() {
 	//cout << list[1].getFirstName();
 	//cout << list[1].getLastName();
 }
-
-/*
-void Sort::insert(const Contact& contact) // sorts by value
-{
-Contact tmpContact;
-int max = list.size() - 1;
-int min = 0;
-int mid = max / 2;
-//tmpContact = File.readContact(mid)
-if (tmpContact.getAttribute(field) > contact.getAttribute(field))
-max = mid - 1;
-else if (File.readContact(mid).getAttribute(field) < contact.getAttribute(field)) {
-if (File.readContact(mid + 1).getAttribute(field) > contact.getAttribute(field))
-list.insert()
-min = mid + 1;
-}
-
-}*/
-
 
 void search(vector<unsigned int> results)
 {
