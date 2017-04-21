@@ -16,7 +16,8 @@ public:
 	vector<Contact> readContactList();
 	void writeContactList(vector<Contact>);
 
-	Contact readContract(int position);
+	Contact readContact(int position);
+	void writeContact(Contact&);
 
 private:
 	//fstream ioFile{"sampleContacts.dat", ios::in | ios::out };

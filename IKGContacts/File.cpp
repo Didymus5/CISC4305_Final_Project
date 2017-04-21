@@ -21,7 +21,7 @@ File::~File()
 }
 
 
-Contact File::readContract(int position)
+Contact File::readContact(int position)
 {
 	Contact contact;
 	return contact;
@@ -80,4 +80,21 @@ void File::writeContactList(vector<Contact> list) {
 		list[i].getEmail() << '|' <<
 		list[i].getPhoneNumber() << '|' <<
 		list[i].getRace() << endl;
+}
+
+void File::writeContact(Contact& contact) {
+	fstream ioFile{ "sampleContacts.dat", ios::app };
+
+	if (!ioFile) { cerr << "File could not be opened" << endl; exit(EXIT_FAILURE); }
+
+	ioFile <<
+		contact.getTitle() << '|' <<
+		contact.getFirstName() << '|' <<
+		contact.getLastName() << '|' <<
+		contact.getNationality() << '|' <<
+		contact.getState() << '|' <<
+		contact.getCountry() << '|' <<
+		contact.getEmail() << '|' <<
+		contact.getPhoneNumber() << '|' <<
+		contact.getRace() << endl;
 }
