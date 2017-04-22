@@ -7,6 +7,9 @@ class Contact
 {
 public:
 	Contact();
+	Contact(string title, string firstname, string lastname,
+		string nationality, string state, string country,
+		string email, string phonenumber, string race);
 	~Contact();
     
     // Title

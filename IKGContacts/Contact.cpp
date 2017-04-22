@@ -7,6 +7,19 @@ Contact::Contact()
     return;
 }
 
+Contact::Contact(string title, string firstName, string lastName,
+	string nationality, string state, string country,
+	string email, string phoneNumber, string race){
+	setTitle(title);
+	setFirstName(firstName);
+	setLastName(lastName);
+	setNationality(nationality);
+	setState(state);
+	setCountry(country);
+	setEmail(email);
+	setPhoneNumber(phoneNumber);
+	setRace(race);
+}
 
 Contact::~Contact()
 {
@@ -103,7 +116,7 @@ string Contact::getRace()const
 	return race;
 }
 
-/*
+
 string Contact::getAttribute(short attribute) const
 {
 	switch (attribute) {
@@ -119,4 +132,4 @@ string Contact::getAttribute(short attribute) const
 	default: return "NULL";
 	}
 	return "NULL";
-}*/
+}
