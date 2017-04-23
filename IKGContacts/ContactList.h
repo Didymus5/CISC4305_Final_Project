@@ -1,25 +1,38 @@
 #pragma once
-#include <vector>
+
+#include "Container.h"
 #include "Contact.h"
 
-using namespace std;
+
+typedef enum Token_t
+{
+	SC_TITLE,
+	SC_NAME,
+	SC_NATIONALITY,
+	SC_STATE,
+	SC_COUNTRY,
+	SC_EMAIL,
+	SC_PHONE,
+	SC_RACE,
+	SC_END
+} Token_t;
 
 class ContactList
 {
 public:
 	ContactList();
 	~ContactList();
-	void sort(short field);
-	void print();
-	void save();
-	void add(Contact&);
-	//void insert(const Contact&); // sorts by value
-	//void search(vector<unsigned int> results);
+
+	void AddContact(Contact& cContact);
+	GenericSet_t& SearchBy(Token_t eToken, string& zString);
+
 private:
-	void sort(short field, int low, int high);
-	void merge(short field, int low, int middle1,
-		int middle2, int high);
-	vector<Contact> list;
-	//vector<unsigned int> list;
-	short field;
+	TitleSet_t			m_tTitles;
+	NameSet_t			m_tNames;
+	NationalitySet_t	m_tNationalities;
+	StateSet_t			m_tStates;
+	CountrySet_t		m_tCountries;
+	EmailSet_t			m_tEmails;
+	PhoneSet_t			m_tPhones;
+	RaceSet_t			m_tRaces;
 };
