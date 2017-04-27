@@ -1,10 +1,11 @@
+#include <string>
 #include "Contact.h"
+#include "File.h"
 
-
+using namespace std;
 
 Contact::Contact()
 {
-    return;
 }
 
 Contact::Contact(string title, string firstName, string lastName,
@@ -19,6 +20,11 @@ Contact::Contact(string title, string firstName, string lastName,
 	setEmail(email);
 	setPhoneNumber(phoneNumber);
 	setRace(race);
+}
+
+Contact::Contact(string zData)
+{
+	unflattenAll(zData);
 }
 
 Contact::~Contact()
@@ -132,4 +138,78 @@ string Contact::getAttribute(short attribute) const
 	default: return "NULL";
 	}
 	return "NULL";
+}
+
+string Contact::getAll() const
+{
+	string zAll;
+
+	zAll += "---------------------------------------------\r\n";
+	zAll += (string("Title: ") + getTitle() + "\r\n");
+	zAll += (string("First Name: ") + getFirstName() + "\r\n");
+	zAll += (string("Last Name: ") + getLastName() + "\r\n");
+	zAll += (string("Nationality: ") + getNationality() + "\r\n");
+	zAll += (string("State: ") + getState() + "\r\n");
+	zAll += (string("Country: ") + getCountry() + "\r\n");
+	zAll += (string("Email: ") + getEmail() + "\r\n");
+	zAll += (string("Phone Number: ") + getPhoneNumber() + "\r\n");
+	zAll += (string("Race: ") + getRace() + "\r\n");
+	zAll += "---------------------------------------------\r\n";
+
+	return zAll;
+}
+
+std::string Contact::flattenAll() const
+{
+	string zAll;
+
+	zAll += "|";
+	zAll += (getTitle() + "|");
+	zAll += (getFirstName() + "|");
+	zAll += (getLastName() + "|");
+	zAll += (getNationality() + "|");
+	zAll += (getState() + "|");
+	zAll += (getCountry() + "|");
+	zAll += (getEmail() + "|");
+	zAll += (getPhoneNumber() + "|");
+	zAll += (getRace() + "|");
+	zAll += "/n";
+
+	return zAll;
+}
+
+void Contact::unflattenAll(string zData)
+{
+	Lines_t tUnflattened;
+	size_t nPosStart,
+		   nPosEnd,
+		   nPosLength,
+		   nStrLength = zData.length();
+
+	nPosStart = zData.find('|');
+
+	do {
+		nPosStart++;
+		nPosEnd = zData.find('|', nPosStart);
+
+		if (nPosEnd == string::npos) {
+			break;
+		}
+
+		nPosLength = nPosEnd - nPosStart;
+
+		tUnflattened.push_back(zData.substr(nPosStart, nPosLength));
+
+		nPosStart = nPosEnd;
+	} while (nPosStart < nStrLength);
+
+	setTitle(tUnflattened[0]);
+	setFirstName(tUnflattened[1]);
+	setLastName(tUnflattened[2]);
+	setNationality(tUnflattened[3]);
+	setState(tUnflattened[4]);
+	setCountry(tUnflattened[5]);
+	setEmail(tUnflattened[6]);
+	setPhoneNumber(tUnflattened[7]);
+	setRace(tUnflattened[8]);
 }

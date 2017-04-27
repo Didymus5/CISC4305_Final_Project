@@ -149,19 +149,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="aboutwindow.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="addcontact.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Contact.h" />
+    <ClInclude Include="ContactList.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="mainwindow.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Sort.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="about.cpp" />
+    <ClCompile Include="addcontact.cpp" />
     <ClCompile Include="Contact.cpp" />
+    <ClCompile Include="ContactList.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
-    <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
@@ -176,6 +185,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="aboutwindow.resx">
+      <DependentUpon>aboutwindow.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addcontact.resx">
+      <DependentUpon>addcontact.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainwindow.resx">
       <DependentUpon>mainwindow.h</DependentUpon>
     </EmbeddedResource>
