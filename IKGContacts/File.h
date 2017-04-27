@@ -18,8 +18,10 @@ public:
 	void zeroOut();
 
 	std::string getFileName() { return m_zFileName; }
+	int getLinesReadCount() { return m_nLinesRead;  }
 
 private:
 	std::string m_zFileName;
 	std::fstream m_cFile;
+	int m_nLinesRead;
 };

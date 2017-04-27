@@ -1,7 +1,3 @@
-﻿  Main.cpp
-  about.cpp
-  addcontact.cpp
-  mainwindow.cpp
-  Generating Code...
+﻿  ContactList.cpp
   IKGContacts.vcxproj -> C:\Other\Education\UMHB\2017\Spring\CISC4305\Projects\ProjectFinal\Project\IKGContacts\Debug\IKGContacts.exe
   IKGContacts.vcxproj -> C:\Other\Education\UMHB\2017\Spring\CISC4305\Projects\ProjectFinal\Project\IKGContacts\Debug\IKGContacts.pdb (Full PDB)

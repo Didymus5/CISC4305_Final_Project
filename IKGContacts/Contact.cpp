@@ -1,6 +1,6 @@
-#include <vector>
 #include <string>
 #include "Contact.h"
+#include "File.h"
 
 using namespace std;
 
@@ -180,7 +180,7 @@ std::string Contact::flattenAll() const
 
 void Contact::unflattenAll(string zData)
 {
-	vector<string> tUnflattened;
+	Lines_t tUnflattened;
 	size_t nPosStart,
 		   nPosEnd,
 		   nPosLength,

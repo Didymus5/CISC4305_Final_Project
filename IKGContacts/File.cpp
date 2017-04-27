@@ -36,6 +36,8 @@ Lines_t File::readLines()
 		tLines.push_back(zLine);
 	}
 
+	m_nLinesRead = tLines.size();
+
 	return tLines;
 }
 

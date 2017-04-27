@@ -40,6 +40,13 @@ namespace IKGContacts {
 		/// </summary>
 		~MainWindow()
 		{
+			Lines_t tLines = cContactList.getAllFlattened();
+
+			if ((tLines.size() > 0) && (tLines.size() != cFile.getLinesReadCount())) {
+				cFile.zeroOut();
+				cFile.writeLines(tLines);
+			}
+
 			if (components)
 			{
 				delete components;

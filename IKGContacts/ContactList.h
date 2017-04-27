@@ -3,6 +3,7 @@
 #include <string>
 #include "Container.h"
 #include "Contact.h"
+#include "File.h"
 
 
 typedef enum Token_t
@@ -28,6 +29,7 @@ public:
 	void AddContact(Contact& cContact);
 	GenericSet_t SearchBy(Token_t eToken, std::string& zString);
 	std::string getAll();
+	Lines_t getAllFlattened();
 
 private:
 	GenericSet_t DoSearchTitle(std::string& zString);

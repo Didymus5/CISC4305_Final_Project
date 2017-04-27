@@ -75,6 +75,19 @@ string ContactList::getAll()
 	return zResult;
 }
 
+Lines_t ContactList::getAllFlattened()
+{
+	Lines_t tResult;
+	TitleSet_t::iterator it;
+	int nIndex;
+	
+	for (it = m_tTitles.begin(), nIndex = 0; it != m_tTitles.end(); it++, nIndex++) {
+		tResult.push_back((*it).flattenAll());
+	}
+
+	return tResult;
+}
+
 GenericSet_t ContactList::DoSearchTitle(std::string& zString)
 {
 	GenericSet_t tResult;
