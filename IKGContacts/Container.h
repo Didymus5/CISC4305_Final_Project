@@ -3,7 +3,13 @@
 #include <set>
 #include "Contact.h"
 
-using namespace std;
+struct CompareGeneric
+{
+	bool operator()(const Contact& lhs, const Contact& rhs) const
+	{
+		return &lhs < &rhs;
+	}
+};
 
 struct CompareByTitle
 {
@@ -13,11 +19,19 @@ struct CompareByTitle
 	}
 };
 
-struct CompareByName
+struct CompareByLastName
 {
 	bool operator()(const Contact& lhs, const Contact& rhs) const
 	{
 		return lhs.getLastName() < rhs.getLastName();
+	}
+};
+
+struct CompareByFirstName
+{
+	bool operator()(const Contact& lhs, const Contact& rhs) const
+	{
+		return lhs.getFirstName() < rhs.getFirstName();
 	}
 };
 
@@ -69,12 +83,13 @@ struct CompareByRace
 	}
 };
 
-typedef set<Contact> GenericSet_t;
-typedef set<Contact, CompareByTitle> TitleSet_t;
-typedef set<Contact, CompareByName> NameSet_t;
-typedef set<Contact, CompareByNationality> NationalitySet_t;
-typedef set<Contact, CompareByState> StateSet_t;
-typedef set<Contact, CompareByCountry> CountrySet_t;
-typedef set<Contact, CompareByEmail> EmailSet_t;
-typedef set<Contact, CompareByPhone> PhoneSet_t;
-typedef set<Contact, CompareByRace> RaceSet_t;
+typedef std::multiset<Contact, CompareGeneric> GenericSet_t;
+typedef std::multiset<Contact, CompareByTitle> TitleSet_t;
+typedef std::multiset<Contact, CompareByFirstName> FirstNameSet_t;
+typedef std::multiset<Contact, CompareByLastName> LastNameSet_t;
+typedef std::multiset<Contact, CompareByNationality> NationalitySet_t;
+typedef std::multiset<Contact, CompareByState> StateSet_t;
+typedef std::multiset<Contact, CompareByCountry> CountrySet_t;
+typedef std::multiset<Contact, CompareByEmail> EmailSet_t;
+typedef std::multiset<Contact, CompareByPhone> PhoneSet_t;
+typedef std::multiset<Contact, CompareByRace> RaceSet_t;

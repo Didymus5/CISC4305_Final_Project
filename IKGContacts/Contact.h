@@ -1,64 +1,69 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
 
 class Contact
 {
 public:
 	Contact();
-	Contact(string title, string firstname, string lastname,
-		string nationality, string state, string country,
-		string email, string phonenumber, string race);
+	Contact(std::string title, std::string firstname, std::string lastname,
+		std::string nationality, std::string state, std::string country,
+		std::string email, std::string phonenumber, std::string race);
+	Contact(std::string zData);
 	~Contact();
     
     // Title
-    void setTitle(string);
-    string getTitle() const;
+    void setTitle(std::string);
+    std::string getTitle() const;
     
     // First Name
-    void setFirstName(string);
-    string getFirstName() const;
+    void setFirstName(std::string);
+    std::string getFirstName() const;
     
     // Last Name
-    void setLastName(string);
-    string getLastName() const;
+    void setLastName(std::string);
+    std::string getLastName() const;
     
     // Nationality
-    void setNationality(string);
-    string getNationality() const;
+    void setNationality(std::string);
+    std::string getNationality() const;
     
     // State
-    void setState(string);
-    string getState() const;
+    void setState(std::string);
+    std::string getState() const;
     
     // Country
-    void setCountry(string);
-    string getCountry() const;
+    void setCountry(std::string);
+    std::string getCountry() const;
     
     // Email
-    void setEmail(string);
-    string getEmail() const;
+    void setEmail(std::string);
+    std::string getEmail() const;
     
     // Phone Number
-    void setPhoneNumber(string);
-    string getPhoneNumber() const;
+    void setPhoneNumber(std::string);
+    std::string getPhoneNumber() const;
     
     // Race
-    void setRace(string);
-    string getRace() const;
+    void setRace(std::string);
+    std::string getRace() const;
 
-	string getAttribute(short) const;
+	std::string getAttribute(short) const;
+
+	std::string getAll() const;
+
+	std::string flattenAll() const;
+	void unflattenAll(std::string zData);
     
 private:
-    string title;
-    string fName;
-    string lName;
-    string nationality;
-    string state;
-    string country;
-    string email;
-    string phoneNumber;
-    string race;
+    std::string title;
+    std::string fName;
+    std::string lName;
+    std::string nationality;
+    std::string state;
+    std::string country;
+    std::string email;
+    std::string phoneNumber;
+    std::string race;
 };
 

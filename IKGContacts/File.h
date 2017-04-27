@@ -1,26 +1,25 @@
 #pragma once
-#include "Contact.h"
 #include <vector>
-#include <iostream>
 #include <string>
 #include <fstream>
 
-using namespace std;
+
+typedef std::vector<std::string> Lines_t;
 
 class File
 {
 public:
-	File(string fileName = "sampleContacts.dat");
+	File(std::string zFileName = ".\\sampleContacts.dat");
 	~File();
 
-	vector<Contact> readContactList();
-	void writeContactList(vector<Contact>);
+	Lines_t readLines();
+	void writeLines(Lines_t tLines);
 
-	Contact readContact(int position);
-	void writeContact(Contact&);
+	void zeroOut();
+
+	std::string getFileName() { return m_zFileName; }
 
 private:
-	string fileName = "sampleContacts.dat";
-	fstream ioFile{fileName, ios::in | ios::out };
-	fstream appFile{ fileName, ios::app };
+	std::string m_zFileName;
+	std::fstream m_cFile;
 };
