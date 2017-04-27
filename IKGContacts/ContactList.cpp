@@ -94,7 +94,7 @@ GenericSet_t ContactList::DoSearchTitle(std::string& zString)
 	TitleSet_t::iterator it;
 
 	for (it = m_tTitles.begin(); it != m_tTitles.end(); it++) {
-		if ((*it).getTitle() == zString) {
+		if ((*it).getTitle().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -108,7 +108,7 @@ GenericSet_t ContactList::DoSearchFirstName(std::string& zString)
 	FirstNameSet_t::iterator it;
 
 	for (it = m_tFirstNames.begin(); it != m_tFirstNames.end(); it++) {
-		if ((*it).getFirstName() == zString) {
+		if ((*it).getFirstName().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -122,7 +122,7 @@ GenericSet_t ContactList::DoSearchLastName(std::string& zString)
 	LastNameSet_t::iterator it;
 
 	for (it = m_tLastNames.begin(); it != m_tLastNames.end(); it++) {
-		if ((*it).getLastName() == zString) {
+		if ((*it).getLastName().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -136,7 +136,7 @@ GenericSet_t ContactList::DoSearchNation(std::string& zString)
 	NationalitySet_t::iterator it;
 
 	for (it = m_tNationalities.begin(); it != m_tNationalities.end(); it++) {
-		if ((*it).getNationality() == zString) {
+		if ((*it).getNationality().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -150,7 +150,7 @@ GenericSet_t ContactList::DoSearchState(std::string& zString)
 	StateSet_t::iterator it;
 
 	for (it = m_tStates.begin(); it != m_tStates.end(); it++) {
-		if ((*it).getState() == zString) {
+		if ((*it).getState().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -164,7 +164,7 @@ GenericSet_t ContactList::DoSearchCountry(std::string& zString)
 	CountrySet_t::iterator it;
 
 	for (it = m_tCountries.begin(); it != m_tCountries.end(); it++) {
-		if ((*it).getCountry() == zString) {
+		if ((*it).getCountry().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -178,7 +178,7 @@ GenericSet_t ContactList::DoSearchEmail(std::string& zString)
 	EmailSet_t::iterator it;
 
 	for (it = m_tEmails.begin(); it != m_tEmails.end(); it++) {
-		if ((*it).getEmail() == zString) {
+		if ((*it).getEmail().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -192,7 +192,7 @@ GenericSet_t ContactList::DoSearchPhone(std::string& zString)
 	PhoneSet_t::iterator it;
 
 	for (it = m_tPhones.begin(); it != m_tPhones.end(); it++) {
-		if ((*it).getPhoneNumber() == zString) {
+		if ((*it).getPhoneNumber().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
@@ -206,7 +206,7 @@ GenericSet_t ContactList::DoSearchRace(std::string& zString)
 	RaceSet_t::iterator it;
 
 	for (it = m_tRaces.begin(); it != m_tRaces.end(); it++) {
-		if ((*it).getRace() == zString) {
+		if ((*it).getRace().substr(0, zString.length()) == zString) {
 			tResult.insert((*it));
 		}
 	}
