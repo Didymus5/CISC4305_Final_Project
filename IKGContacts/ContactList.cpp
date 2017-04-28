@@ -1,215 +1,121 @@
-#include <iostream>
 #include "ContactList.h"
-
-using namespace std;
-
+#include "File.h"
+#include <array>
 
 ContactList::ContactList()
 {
+	File file;
+	//cout << "read contact list()" << endl;
+	list = file.readContactList();
 }
+//
+// sort accepts a numerical value coresponding to a Contact object's attribute
+// 1 - title, 2 - firstName, 3 - lastName...
+// ContactList vector is sorted alphanumerically for corresponding field
+//
+void ContactList::sort(short field)
+{
+	sort(field, 0, list.size() - 1);
+	//return 0;
+}
+
+void ContactList::sort(short field, int low, int high) {
+	if ((high - low) >= 1) {
+		int middle1{ (low + high) / 2 };
+		int middle2{ middle1 + 1 };
+
+		sort(field, low, middle1);
+		sort(field, middle2, high);
+
+		merge(field, low, middle1, middle2, high);
+	}
+	//return 0;
+}
+
+void ContactList::merge(short field, int low, int middle1, int middle2, const int high) {
+	int leftIndex{ low };
+	int rightIndex{ middle2 };
+	int combinedIndex{ low };
+	//size_t size = high;
+	vector<Contact> combined;
+	Contact emptyContact;
+	for (int i = 0; i < low; i++)
+		combined.push_back(emptyContact);
+
+	while (leftIndex <= middle1 && rightIndex <= high) {
+		if (list[leftIndex].getAttribute(field) <= list[rightIndex].getAttribute(field)) {
+			combined.push_back(list[leftIndex++]);
+			//combinedIndex++;
+		}
+		else {
+			combined.push_back(list[rightIndex++]);
+			//combinedIndex++;
+		}
+	}
+
+	if (leftIndex == middle2) {
+		while (rightIndex <= high) {
+			combined.push_back(list[rightIndex++]);
+			//combinedIndex++;
+		}
+	}
+	else {
+		while (leftIndex <= middle1) {
+			combined.push_back(list[leftIndex++]);
+			//combinedIndex++;
+		}
+	}
+
+	for (int i = low; i <= high; i++) {
+		list[i] = combined[i];
+	}
+
+	//return 0;
+}
+
 
 ContactList::~ContactList()
 {
+
 }
 
-void ContactList::AddContact(Contact& cContact)
+void ContactList::save()
 {
-	m_tTitles.insert(cContact);
-	m_tFirstNames.insert(cContact);
-	m_tLastNames.insert(cContact);
-	m_tNationalities.insert(cContact);
-	m_tStates.insert(cContact);
-	m_tCountries.insert(cContact);
-	m_tEmails.insert(cContact);
-	m_tPhones.insert(cContact);
-	m_tRaces.insert(cContact);
+	File file;
+	file.writeContactList(list);
 }
 
-GenericSet_t ContactList::SearchBy(Token_t eToken, std::string& zString)
+void ContactList::add(Contact& contact)
 {
-	GenericSet_t tResult;
-
-	switch (eToken) {
-		case SC_TITLE: {
-			tResult = DoSearchTitle(zString);
-		} break;
-		case SC_FIRST_NAME: {
-			tResult = DoSearchFirstName(zString);
-		} break;
-		case SC_LAST_NAME: {
-			tResult = DoSearchLastName(zString);
-		} break;
-		case SC_NATIONALITY: {
-			tResult = DoSearchNation(zString);
-			} break;
-		case SC_STATE: {
-			tResult = DoSearchState(zString);
-			} break;
-		case SC_COUNTRY: {
-			tResult = DoSearchCountry(zString);
-			} break;
-		case SC_EMAIL: {
-			tResult = DoSearchEmail(zString);
-			} break;
-		case SC_PHONE: {
-			tResult = DoSearchPhone(zString);
-			} break;
-		case SC_RACE: {
-			tResult = DoSearchRace(zString);
-			} break;
-		default:break;
-	}
-
-	return tResult;
+	list.push_back(contact);
+	File file;
+	file.writeContact(contact);
 }
 
-string ContactList::getAll()
-{
-	string zResult;
-	TitleSet_t::iterator it;
+void ContactList::print() {
+	for (int i = 0; i < list.size(); i++)
+		cout <<
+			list[i].getTitle() << '|' <<
+			list[i].getFirstName() << '|' <<
+			list[i].getLastName() << '|' <<
+			list[i].getNationality() << '|' <<
+			list[i].getState() << '|' <<
+			list[i].getCountry() << '|' <<
+			list[i].getEmail() << '|' <<
+			list[i].getPhoneNumber() << '|' <<
+			list[i].getRace() << endl;
 
-	for (it = m_tTitles.begin(); it != m_tTitles.end(); it++) {
-		zResult += (*it).getAll();
-	}
-
-	return zResult;
+	//cout << "print";
+	//cout << list[1].getFirstName();
+	//cout << list[1].getLastName();
 }
 
-Lines_t ContactList::getAllFlattened()
-{
-	Lines_t tResult;
-	TitleSet_t::iterator it;
-	int nIndex;
-	
-	for (it = m_tTitles.begin(), nIndex = 0; it != m_tTitles.end(); it++, nIndex++) {
-		tResult.push_back((*it).flattenAll());
-	}
+//void search(vector<unsigned int> results){}
 
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchTitle(std::string& zString)
-{
-	GenericSet_t tResult;
-	TitleSet_t::iterator it;
-
-	for (it = m_tTitles.begin(); it != m_tTitles.end(); it++) {
-		if ((*it).getTitle().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchFirstName(std::string& zString)
-{
-	GenericSet_t tResult;
-	FirstNameSet_t::iterator it;
-
-	for (it = m_tFirstNames.begin(); it != m_tFirstNames.end(); it++) {
-		if ((*it).getFirstName().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchLastName(std::string& zString)
-{
-	GenericSet_t tResult;
-	LastNameSet_t::iterator it;
-
-	for (it = m_tLastNames.begin(); it != m_tLastNames.end(); it++) {
-		if ((*it).getLastName().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchNation(std::string& zString)
-{
-	GenericSet_t tResult;
-	NationalitySet_t::iterator it;
-
-	for (it = m_tNationalities.begin(); it != m_tNationalities.end(); it++) {
-		if ((*it).getNationality().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchState(std::string& zString)
-{
-	GenericSet_t tResult;
-	StateSet_t::iterator it;
-
-	for (it = m_tStates.begin(); it != m_tStates.end(); it++) {
-		if ((*it).getState().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchCountry(std::string& zString)
-{
-	GenericSet_t tResult;
-	CountrySet_t::iterator it;
-
-	for (it = m_tCountries.begin(); it != m_tCountries.end(); it++) {
-		if ((*it).getCountry().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchEmail(std::string& zString)
-{
-	GenericSet_t tResult;
-	EmailSet_t::iterator it;
-
-	for (it = m_tEmails.begin(); it != m_tEmails.end(); it++) {
-		if ((*it).getEmail().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchPhone(std::string& zString)
-{
-	GenericSet_t tResult;
-	PhoneSet_t::iterator it;
-
-	for (it = m_tPhones.begin(); it != m_tPhones.end(); it++) {
-		if ((*it).getPhoneNumber().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
-}
-
-GenericSet_t ContactList::DoSearchRace(std::string& zString)
-{
-	GenericSet_t tResult;
-	RaceSet_t::iterator it;
-
-	for (it = m_tRaces.begin(); it != m_tRaces.end(); it++) {
-		if ((*it).getRace().substr(0, zString.length()) == zString) {
-			tResult.insert((*it));
-		}
-	}
-
-	return tResult;
+vector<Contact> ContactList::search(short field, string search) {
+	vector<Contact> results;
+	for (int i = 0; i < list.size(); i++)
+		if (list[i].getAttribute(field).substr(0, search.length()) == search)
+			results.push_back(list[i]);
+	return results;
 }
