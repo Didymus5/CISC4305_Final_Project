@@ -3,7 +3,7 @@
 using namespace IKGContacts;
 
 [STAThreadAttribute]
-int main(array<System::String ^> ^args)
+int main()//array<System::String ^> ^args)
 {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);

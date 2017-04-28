@@ -40,12 +40,12 @@ namespace IKGContacts {
 		/// </summary>
 		~MainWindow()
 		{
-			Lines_t tLines = cContactList.getAllFlattened();
+			//Lines_t tLines = cContactList.getAllFlattened();
 
-			if ((tLines.size() > 0) && (tLines.size() != cFile.getLinesReadCount())) {
-				cFile.zeroOut();
-				cFile.writeLines(tLines);
-			}
+			//if ((tLines.size() > 0) && (tLines.size() != cFile.getLinesReadCount())) {
+			//	cFile.zeroOut();
+			//	cFile.writeLines(tLines);
+			//}
 
 			if (components)
 			{
@@ -284,10 +284,11 @@ namespace IKGContacts {
 		}
 #pragma endregion
 	private: System::Void btnSearch_Click(System::Object^  sender, System::EventArgs^  e) {
-		Token_t tToken;
-		GenericSet_t tSet;
-		GenericSet_t::iterator it;
+		int tToken;
+		vector<Contact> tSet;
+		//GenericSet_t::iterator it;
 		std::string unmanaged;
+		ContactList dContactList;
 
 		if (lbxSearchBy->SelectedIndex < 0) {
 			lbxSearchBy->SelectedIndex = 0;
@@ -296,39 +297,39 @@ namespace IKGContacts {
 		unmanaged = msclr::interop::marshal_as<std::string>(lbxSearchBy->SelectedItem->ToString());
 
 		if (unmanaged == std::string("Title")) {
-			tToken = SC_TITLE;
+			tToken = 1;
 		}
 
 		if (unmanaged == std::string("First Name")) {
-			tToken = SC_FIRST_NAME;
+			tToken = 2;
 		}
 
 		if (unmanaged == std::string("Last Name")) {
-			tToken = SC_LAST_NAME;
+			tToken = 3;
 		}
 
 		if (unmanaged == std::string("Nationality")) {
-			tToken = SC_NATIONALITY;
+			tToken = 4;
 		}
 
 		if (unmanaged == std::string("State")) {
-			tToken = SC_STATE;
+			tToken = 5;
 		}
 
 		if (unmanaged == std::string("Country")) {
-			tToken = SC_COUNTRY;
+			tToken = 6;
 		}
 
 		if (unmanaged == std::string("Email")) {
-			tToken = SC_EMAIL;
+			tToken = 7;
 		}
 
 		if (unmanaged == std::string("Phone")) {
-			tToken = SC_PHONE;
+			tToken = 8;
 		}
 
 		if (unmanaged == std::string("Race")) {
-			tToken = SC_RACE;
+			tToken = 9;
 		}
 
 		std::string zSearch = msclr::interop::marshal_as<std::string>(txtSearch->Text);
@@ -338,11 +339,20 @@ namespace IKGContacts {
 		txtResults->AppendText(gcnew String(zSearch.c_str()));
 		txtResults->AppendText(gcnew String("\n"));
 
-		tSet = cContactList.SearchBy(tToken, zSearch);
+		dContactList = cContactList;
+		dContactList.sort(tToken);
+		tSet = dContactList.search(tToken, zSearch);
 
 		txtResults->Clear();
-		for (it = tSet.begin(); it != tSet.end(); it++) {
-			txtResults->AppendText(gcnew String((*it).getAll().c_str()));
+		for (int i = 0; i < tSet.size(); i++) {
+			for (short j = 1; j <= 9; j++) {
+				if (j == 4 || j == 7 || j == 8)
+					txtResults->AppendText(gcnew String("\n"));
+				txtResults->AppendText(gcnew String(tSet[i].getAttribute(j).c_str()));
+				txtResults->AppendText(gcnew String(" "));
+			}
+			txtResults->AppendText(gcnew String("\n"));
+			txtResults->AppendText(gcnew String("\n"));
 		}
 	}
 
@@ -366,11 +376,11 @@ namespace IKGContacts {
 	}
 
 	private: System::Void MainWindow_Load(System::Object^  sender, System::EventArgs^  e) {
-		Lines_t tLines = cFile.readLines();
+		//Lines_t tLines = cFile.readLines();
 
-		for (unsigned int nIndex = 0; nIndex < tLines.size(); nIndex++) {
-			cContactList.AddContact(Contact(tLines[nIndex]));
-		}
+		//for (unsigned int nIndex = 0; nIndex < tLines.size(); nIndex++) {
+		//	cContactList.AddContact(Contact(tLines[nIndex]));
+		//}
 	}
 
 	private: System::Void lbxSearchBy_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
