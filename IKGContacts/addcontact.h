@@ -403,7 +403,7 @@ namespace IKGContacts {
 			std::string race = msclr::interop::marshal_as<std::string>(txtRace->Text);
 
 			std::string zAll;
-
+			/*
 			zAll += "|";
 			zAll += (title + "|");
 			zAll += (fName + "|");
@@ -415,8 +415,8 @@ namespace IKGContacts {
 			zAll += (phoneNumber + "|");
 			zAll += (race + "|");
 			zAll += "/n";
-
-			m_pcContactList->AddContact(Contact(zAll));
+			*/
+			m_pcContactList->add(Contact(title, fName, lName, nationality, state, country, email, phoneNumber, race));
 
 			Form::Close();
 		}
