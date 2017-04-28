@@ -46,7 +46,7 @@ void File::writeLines(Lines_t tLines)
 	int nSize = tLines.size();
 
 	for (int nIndex = 0; nIndex < nSize; nIndex++) {
-		m_cFile << tLines[nIndex] << endl;
+		m_cFile << tLines[nIndex];
 	}
 }
 

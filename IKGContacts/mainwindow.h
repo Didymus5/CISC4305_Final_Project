@@ -376,9 +376,9 @@ namespace IKGContacts {
 	}
 
 	private: System::Void addContactToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		Form^ frmAbout = gcnew AddContact;
+		Form^ frmAddContact = gcnew AddContact(cContactList);
 		//Display frmAbout as a modal dialog
-		frmAbout->ShowDialog();
+		frmAddContact->ShowDialog();
 	}
 };
 }

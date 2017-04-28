@@ -1,5 +1,6 @@
 #pragma once
 
+#include <msclr\marshal_cppstd.h>
 #include "ContactList.h"
 
 namespace IKGContacts {
@@ -16,14 +17,18 @@ namespace IKGContacts {
 	/// </summary>
 	public ref class AddContact : public System::Windows::Forms::Form
 	{
+		ContactList* m_pcContactList;
+
 	public:
-		AddContact(void)
+		AddContact(ContactList& cContactList)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
 			lstTitle->SelectedIndex = 1;
+
+			m_pcContactList = &cContactList;
 		}
 
 	protected:
@@ -380,6 +385,40 @@ namespace IKGContacts {
 	}
 
 	private: System::Void btnAdd_Click(System::Object^  sender, System::EventArgs^  e) {
+		if ((txtFirstName->Text == "") || (txtLastName->Text == "")) {
+			MessageBox::Show("Please fill in the Name Info section completely.",
+				"Message", MessageBoxButtons::OKCancel,
+				MessageBoxIcon::Exclamation);
+		}
+		else {
+			std::string title = msclr::interop::marshal_as<std::string>(lstTitle->SelectedItem->ToString());
+			std::string fName = msclr::interop::marshal_as<std::string>(txtFirstName->Text);
+			std::string lName = msclr::interop::marshal_as<std::string>(txtLastName->Text);
+			std::string nationality = msclr::interop::marshal_as<std::string>(txtNation->Text);
+			std::string state = msclr::interop::marshal_as<std::string>(txtState->Text);
+			std::string country = msclr::interop::marshal_as<std::string>(txtCountry->Text);
+			std::string email = msclr::interop::marshal_as<std::string>(txtEmail->Text);
+			std::string phoneNumber = msclr::interop::marshal_as<std::string>(txtPhone->Text);
+			std::string race = msclr::interop::marshal_as<std::string>(txtRace->Text);
+
+			std::string zAll;
+
+			zAll += "|";
+			zAll += (title + "|");
+			zAll += (fName + "|");
+			zAll += (lName + "|");
+			zAll += (nationality + "|");
+			zAll += (state + "|");
+			zAll += (country + "|");
+			zAll += (email + "|");
+			zAll += (phoneNumber + "|");
+			zAll += (race + "|");
+			zAll += "/n";
+
+			m_pcContactList->AddContact(Contact(zAll));
+
+			Form::Close();
+		}
 	}
 };
 }

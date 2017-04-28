@@ -173,7 +173,7 @@ std::string Contact::flattenAll() const
 	zAll += (getEmail() + "|");
 	zAll += (getPhoneNumber() + "|");
 	zAll += (getRace() + "|");
-	zAll += "/n";
+	zAll += "\n";
 
 	return zAll;
 }
