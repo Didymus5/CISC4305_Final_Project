@@ -46,7 +46,8 @@ namespace IKGContacts {
 	protected:
 	private: System::Windows::Forms::TextBox^  txtLastName;
 	private: System::Windows::Forms::TextBox^  txtFirstName;
-	private: System::Windows::Forms::ListBox^  lstTitle;
+	//private: System::Windows::Forms::ListBox^  lstTitle;
+	private: System::Windows::Forms::ComboBox^  lstTitle;
 
 	private: System::Windows::Forms::Label^  lblLastName;
 	private: System::Windows::Forms::Label^  lblFirstName;
@@ -93,7 +94,7 @@ namespace IKGContacts {
 			this->grpName = (gcnew System::Windows::Forms::GroupBox());
 			this->txtLastName = (gcnew System::Windows::Forms::TextBox());
 			this->txtFirstName = (gcnew System::Windows::Forms::TextBox());
-			this->lstTitle = (gcnew System::Windows::Forms::ListBox());
+			this->lstTitle = (gcnew System::Windows::Forms::ComboBox());
 			this->lblLastName = (gcnew System::Windows::Forms::Label());
 			this->lblFirstName = (gcnew System::Windows::Forms::Label());
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
@@ -135,14 +136,14 @@ namespace IKGContacts {
 			// 
 			// txtLastName
 			// 
-			this->txtLastName->Location = System::Drawing::Point(121, 71);
+			this->txtLastName->Location = System::Drawing::Point(110, 75);
 			this->txtLastName->Name = L"txtLastName";
 			this->txtLastName->Size = System::Drawing::Size(183, 20);
 			this->txtLastName->TabIndex = 5;
 			// 
 			// txtFirstName
 			// 
-			this->txtFirstName->Location = System::Drawing::Point(121, 46);
+			this->txtFirstName->Location = System::Drawing::Point(110, 50);
 			this->txtFirstName->Name = L"txtFirstName";
 			this->txtFirstName->Size = System::Drawing::Size(183, 20);
 			this->txtFirstName->TabIndex = 4;
@@ -156,7 +157,7 @@ namespace IKGContacts {
 			this->lstTitle->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Dr.", L"Mr.", L"Mrs.", L"Ms." });
 			this->lstTitle->Location = System::Drawing::Point(70, 16);
 			this->lstTitle->Name = L"lstTitle";
-			this->lstTitle->Size = System::Drawing::Size(63, 24);
+			this->lstTitle->Size = System::Drawing::Size(63, 28);
 			this->lstTitle->TabIndex = 3;
 			// 
 			// lblLastName
@@ -164,7 +165,7 @@ namespace IKGContacts {
 			this->lblLastName->AutoSize = true;
 			this->lblLastName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblLastName->Location = System::Drawing::Point(14, 71);
+			this->lblLastName->Location = System::Drawing::Point(6, 71);
 			this->lblLastName->Name = L"lblLastName";
 			this->lblLastName->Size = System::Drawing::Size(101, 22);
 			this->lblLastName->TabIndex = 2;
@@ -175,7 +176,7 @@ namespace IKGContacts {
 			this->lblFirstName->AutoSize = true;
 			this->lblFirstName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblFirstName->Location = System::Drawing::Point(14, 47);
+			this->lblFirstName->Location = System::Drawing::Point(6, 47);
 			this->lblFirstName->Name = L"lblFirstName";
 			this->lblFirstName->Size = System::Drawing::Size(102, 22);
 			this->lblFirstName->TabIndex = 1;
@@ -186,7 +187,7 @@ namespace IKGContacts {
 			this->lblTitle->AutoSize = true;
 			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTitle->Location = System::Drawing::Point(14, 16);
+			this->lblTitle->Location = System::Drawing::Point(6, 15);
 			this->lblTitle->Name = L"lblTitle";
 			this->lblTitle->Size = System::Drawing::Size(50, 22);
 			this->lblTitle->TabIndex = 0;
@@ -200,21 +201,21 @@ namespace IKGContacts {
 			this->grpContact->Controls->Add(this->lblEmail);
 			this->grpContact->Location = System::Drawing::Point(12, 123);
 			this->grpContact->Name = L"grpContact";
-			this->grpContact->Size = System::Drawing::Size(330, 74);
+			this->grpContact->Size = System::Drawing::Size(330, 70);
 			this->grpContact->TabIndex = 1;
 			this->grpContact->TabStop = false;
 			this->grpContact->Text = L"Contact Info";
 			// 
 			// txtPhone
 			// 
-			this->txtPhone->Location = System::Drawing::Point(82, 40);
+			this->txtPhone->Location = System::Drawing::Point(110, 42);
 			this->txtPhone->Name = L"txtPhone";
 			this->txtPhone->Size = System::Drawing::Size(183, 20);
 			this->txtPhone->TabIndex = 9;
 			// 
 			// txtEmail
 			// 
-			this->txtEmail->Location = System::Drawing::Point(81, 13);
+			this->txtEmail->Location = System::Drawing::Point(110, 17);
 			this->txtEmail->Name = L"txtEmail";
 			this->txtEmail->Size = System::Drawing::Size(183, 20);
 			this->txtEmail->TabIndex = 8;
@@ -224,7 +225,7 @@ namespace IKGContacts {
 			this->lblPhone->AutoSize = true;
 			this->lblPhone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPhone->Location = System::Drawing::Point(15, 40);
+			this->lblPhone->Location = System::Drawing::Point(6, 40);
 			this->lblPhone->Name = L"lblPhone";
 			this->lblPhone->Size = System::Drawing::Size(67, 22);
 			this->lblPhone->TabIndex = 7;
@@ -235,7 +236,7 @@ namespace IKGContacts {
 			this->lblEmail->AutoSize = true;
 			this->lblEmail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblEmail->Location = System::Drawing::Point(15, 16);
+			this->lblEmail->Location = System::Drawing::Point(6, 15);
 			this->lblEmail->Name = L"lblEmail";
 			this->lblEmail->Size = System::Drawing::Size(59, 22);
 			this->lblEmail->TabIndex = 6;
@@ -251,23 +252,23 @@ namespace IKGContacts {
 			this->grpOrigin->Controls->Add(this->txtState);
 			this->grpOrigin->Controls->Add(this->lblCountry);
 			this->grpOrigin->Controls->Add(this->lblState);
-			this->grpOrigin->Location = System::Drawing::Point(12, 203);
+			this->grpOrigin->Location = System::Drawing::Point(12, 195);
 			this->grpOrigin->Name = L"grpOrigin";
-			this->grpOrigin->Size = System::Drawing::Size(330, 121);
+			this->grpOrigin->Size = System::Drawing::Size(330, 130);
 			this->grpOrigin->TabIndex = 2;
 			this->grpOrigin->TabStop = false;
 			this->grpOrigin->Text = L"Origin Info";
 			// 
 			// txtRace
 			// 
-			this->txtRace->Location = System::Drawing::Point(69, 92);
+			this->txtRace->Location = System::Drawing::Point(110, 90);
 			this->txtRace->Name = L"txtRace";
 			this->txtRace->Size = System::Drawing::Size(183, 20);
 			this->txtRace->TabIndex = 17;
 			// 
 			// txtNation
 			// 
-			this->txtNation->Location = System::Drawing::Point(111, 66);
+			this->txtNation->Location = System::Drawing::Point(110, 65);
 			this->txtNation->Name = L"txtNation";
 			this->txtNation->Size = System::Drawing::Size(183, 20);
 			this->txtNation->TabIndex = 16;
@@ -277,7 +278,7 @@ namespace IKGContacts {
 			this->lblRace->AutoSize = true;
 			this->lblRace->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblRace->Location = System::Drawing::Point(6, 90);
+			this->lblRace->Location = System::Drawing::Point(6, 87);
 			this->lblRace->Name = L"lblRace";
 			this->lblRace->Size = System::Drawing::Size(57, 22);
 			this->lblRace->TabIndex = 15;
@@ -288,7 +289,7 @@ namespace IKGContacts {
 			this->lblNation->AutoSize = true;
 			this->lblNation->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblNation->Location = System::Drawing::Point(6, 64);
+			this->lblNation->Location = System::Drawing::Point(6, 62);
 			this->lblNation->Name = L"lblNation";
 			this->lblNation->Size = System::Drawing::Size(99, 22);
 			this->lblNation->TabIndex = 14;
@@ -296,14 +297,14 @@ namespace IKGContacts {
 			// 
 			// txtCountry
 			// 
-			this->txtCountry->Location = System::Drawing::Point(90, 40);
+			this->txtCountry->Location = System::Drawing::Point(110, 40);
 			this->txtCountry->Name = L"txtCountry";
 			this->txtCountry->Size = System::Drawing::Size(183, 20);
 			this->txtCountry->TabIndex = 13;
 			// 
 			// txtState
 			// 
-			this->txtState->Location = System::Drawing::Point(69, 14);
+			this->txtState->Location = System::Drawing::Point(110, 15);
 			this->txtState->Name = L"txtState";
 			this->txtState->Size = System::Drawing::Size(183, 20);
 			this->txtState->TabIndex = 12;
@@ -313,7 +314,7 @@ namespace IKGContacts {
 			this->lblCountry->AutoSize = true;
 			this->lblCountry->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblCountry->Location = System::Drawing::Point(6, 38);
+			this->lblCountry->Location = System::Drawing::Point(6, 39);
 			this->lblCountry->Name = L"lblCountry";
 			this->lblCountry->Size = System::Drawing::Size(78, 22);
 			this->lblCountry->TabIndex = 11;
@@ -324,7 +325,7 @@ namespace IKGContacts {
 			this->lblState->AutoSize = true;
 			this->lblState->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblState->Location = System::Drawing::Point(6, 12);
+			this->lblState->Location = System::Drawing::Point(6, 15);
 			this->lblState->Name = L"lblState";
 			this->lblState->Size = System::Drawing::Size(57, 22);
 			this->lblState->TabIndex = 10;

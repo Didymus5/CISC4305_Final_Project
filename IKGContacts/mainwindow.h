@@ -73,7 +73,8 @@ namespace IKGContacts {
 
 	private: System::Windows::Forms::Button^  btnSearch;
 	private: System::Windows::Forms::Button^  btnClear;
-	private: System::Windows::Forms::ListBox^  lbxSearchBy;
+	//private: System::Windows::Forms::ListBox^  lbxSearchBy;
+	private: System::Windows::Forms::ComboBox^  lbxSearchBy;
 	private: System::Windows::Forms::ToolStripMenuItem^  contactsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  addContactToolStripMenuItem;
 
@@ -100,7 +101,8 @@ namespace IKGContacts {
 			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->grpSearch = (gcnew System::Windows::Forms::GroupBox());
-			this->lbxSearchBy = (gcnew System::Windows::Forms::ListBox());
+			//this->lbxSearchBy = (gcnew System::Windows::Forms::ListBox());
+			this->lbxSearchBy = (gcnew System::Windows::Forms::ComboBox());
 			this->btnSearch = (gcnew System::Windows::Forms::Button());
 			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
 			this->grpResults = (gcnew System::Windows::Forms::GroupBox());
